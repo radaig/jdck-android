@@ -9,14 +9,9 @@ import lombok.Data;
  */
 @Data
 public class QlEnv {
-
-    private String _id;
-
+    private String id;
     private String name;
-
     private String remarks;
-
     private Integer status;
-
     private String value;
 }
