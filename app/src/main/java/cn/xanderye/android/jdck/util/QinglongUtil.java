@@ -29,16 +29,14 @@ public class QinglongUtil {
         if (url.endsWith("/")) {
             url = url.substring(0, url.length() - 1);
         }
-        if (qlInfo.getOldVersion()) {
-            url += "/api/login";
-        } else {
-            url += "/api/user/login";
-        }
-        url += "?t=" + System.currentTimeMillis();
-        JSONObject params = new JSONObject();
-        params.put("username", qlInfo.getUsername());
-        params.put("password", qlInfo.getPassword());
-        HttpUtil.ResEntity resEntity = HttpUtil.doPostJSON(url, params.toJSONString());
+        url += "open/auth/token";
+        url += "?client_id=" + qlInfo.getUsername();
+        url += "&client_secret=" + qlInfo.getPassword();
+        //url += "&t=" + System.currentTimeMillis();
+        //JSONObject params = new JSONObject();
+        //params.put("username", qlInfo.getUsername());
+        //params.put("password", qlInfo.getPassword());
+        HttpUtil.ResEntity resEntity = HttpUtil.doGet(url);
         if (resEntity.getStatusCode() != 200) {
             throw new IOException("服务器" + resEntity.getStatusCode() + "错误");
         }
@@ -57,7 +55,7 @@ public class QinglongUtil {
      * @date 2022/5/11
      */
     public static List<QlEnv> getEnvList(QlInfo qlInfo) throws IOException {
-        String url = qlInfo.getAddress() + "/api/envs";
+        String url = qlInfo.getAddress() + "/open/envs";
         url += "?searchValue=&t=" + System.currentTimeMillis();
         Map<String, Object> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + qlInfo.getToken());
@@ -81,7 +79,7 @@ public class QinglongUtil {
      * @date 2022/5/11
      */
     public static boolean saveEnv(QlInfo qlInfo, QlEnv qlEnv) throws IOException {
-        String url = qlInfo.getAddress() + "/api/envs";;
+        String url = qlInfo.getAddress() + "/open/envs";;
         url += "?t=" + System.currentTimeMillis();
         Map<String, Object> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + qlInfo.getToken());
@@ -93,7 +91,7 @@ public class QinglongUtil {
         if (qlEnv.get_id() != null) {
             // 更新
             if (qlInfo.getOldVersion()) {
-                params.put("_id", qlEnv.get_id());
+                params.put("id", qlEnv.get_id());
             } else {
                 params.put("id", qlEnv.get_id());
             }
