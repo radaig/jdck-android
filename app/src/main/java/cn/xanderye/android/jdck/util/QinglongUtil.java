@@ -36,7 +36,7 @@ public class QinglongUtil {
         //JSONObject params = new JSONObject();
         //params.put("username", qlInfo.getUsername());
         //params.put("password", qlInfo.getPassword());
-        Map<String, String> querys = new HashMap<String, Object>();
+        Map<String, Object> querys = new HashMap<String, Object>();
         querys.put("client_id",qlInfo.getUsername());
         querys.put("client_secret",qlInfo.getPassword());
         
