@@ -10,6 +10,7 @@
 * 一键复制cookie
 * 清空cookie并重新加载
 * 支持青龙面板登录及更新cookie
+* 更新了使用青龙面板的，open/env进行ck的更新，而不必使用admin账号。
 
 ## 界面展示
 
