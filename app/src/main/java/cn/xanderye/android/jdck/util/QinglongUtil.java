@@ -29,7 +29,7 @@ public class QinglongUtil {
         if (url.endsWith("/")) {
             url = url.substring(0, url.length() - 1);
         }
-        url += "open/auth/token";
+        url += "/open/auth/token";
         url += "?client_id=" + qlInfo.getUsername();
         url += "&client_secret=" + qlInfo.getPassword();
         //url += "&t=" + System.currentTimeMillis();
