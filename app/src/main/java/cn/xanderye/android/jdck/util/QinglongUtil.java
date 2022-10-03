@@ -30,12 +30,6 @@ public class QinglongUtil {
             url = url.substring(0, url.length() - 1);
         }
         url += "/open/auth/token";
-        //url += "?client_id=" + qlInfo.getUsername();
-        //url += "&client_secret=" + qlInfo.getPassword();
-        //url += "&t=" + System.currentTimeMillis();
-        //JSONObject params = new JSONObject();
-        //params.put("username", qlInfo.getUsername());
-        //params.put("password", qlInfo.getPassword());
         Map<String, Object> querys = new HashMap<String, Object>();
         querys.put("client_id",qlInfo.getUsername());
         querys.put("client_secret",qlInfo.getPassword());
